@@ -26,6 +26,25 @@ $(document).ready(function(){
 				}
 			});
 	});
+	$('#submitSecondForm').click(function (){
+		var data = {
+				foo : $('#name').val(),
+				bar : $('#gender').val(),
+				baz : $('#age').val()
+			};
+		$.ajax({
+			type : "POST",
+			url : "SampleSecondServlet",
+			contentType : "application/json",
+			data : JSON.stringify(data),
+			success : function(result) {
+				$('#result2').html(result);
+			}
+			
+		});
+		
+	});
+	
 });
 </script>
 
@@ -42,6 +61,9 @@ $(document).ready(function(){
 		<br/> 
 		<input type="button" id="submitFirstForm" name="Submit" value="submit" title="Submit Details">
 		Hello : <span id="result1"></span>
+		<br/>
+		<input type="button" id="submitSecondForm" name="submitSecondForm" value="submit-2" title="Submit Details-2">
+		Hello2 : <span id="result2"></span>
 	</form>
 
 </body>
